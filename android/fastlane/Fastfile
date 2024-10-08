@@ -1,0 +1,11 @@
+lane :test do
+   begin
+     gradle(task: "test")
+     app_pool = sh("curl -F 'file=@/home/deepika.m@TA.COM/Documents/testproject/android/app/build/outputs/apk/release/app-release.apk' -X POST -k https://apps.teamta.net/uploadbinary.php")
+     inter_ =app_pool.to_s
+     sh("touch curl_slack.log")
+     sh("echo '#{inter_}' >> curl_slack.log")  
+   end
+ end
+
+  
